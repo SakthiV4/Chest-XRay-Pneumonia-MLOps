@@ -1,0 +1,372 @@
+/* ================================================================
+   App.css — Component-level styles for PneumoScan AI
+   ================================================================ */
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 13, 26, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--clr-border);
+  padding: var(--space-4) var(--space-8);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--clr-accent), #0070a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  box-shadow: 0 0 20px var(--clr-accent-glow);
+}
+
+.logo-text {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.logo-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--clr-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.logo-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--clr-accent), #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text-secondary);
+  background: var(--clr-accent-dim);
+  white-space: nowrap;
+}
+
+/* ── Main ─────────────────────────────────────────────────── */
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero { text-align: center; }
+
+.hero-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: var(--space-4);
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── Upload grid ──────────────────────────────────────────── */
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .upload-grid { grid-template-columns: 1fr; }
+}
+
+/* ── DropZone ─────────────────────────────────────────────── */
+.dropzone {
+  border: 2px dashed var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-12) var(--space-8);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  background: var(--clr-accent-dim);
+  text-align: center;
+  outline: none;
+}
+
+.dropzone:hover,
+.dropzone:focus {
+  border-color: var(--clr-accent);
+  background: rgba(0, 212, 255, 0.08);
+  box-shadow: 0 0 24px var(--clr-accent-glow);
+}
+
+.dropzone--active {
+  border-color: var(--clr-accent);
+  background: rgba(0, 212, 255, 0.12);
+  box-shadow: 0 0 40px var(--clr-accent-glow);
+  transform: scale(1.01);
+}
+
+.dropzone--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dropzone-content { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+
+.dropzone-icon {
+  color: var(--clr-text-muted);
+  transition: all var(--transition-normal);
+}
+
+.dropzone-icon--active { color: var(--clr-accent); }
+
+.dropzone-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--clr-text-primary);
+}
+
+.dropzone-sub {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+}
+
+/* ── Image preview ────────────────────────────────────────── */
+.preview-container {
+  margin-top: var(--space-6);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
+}
+
+.preview-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+.preview-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.75rem;
+  color: var(--clr-text-secondary);
+  border-top: 1px solid var(--clr-border);
+}
+
+/* ── Action buttons ───────────────────────────────────────── */
+.action-row {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text-secondary);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--clr-border-hover);
+  color: var(--clr-text-primary);
+  background: var(--clr-surface);
+}
+
+/* ── Error banner ─────────────────────────────────────────── */
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  background: rgba(248, 113, 113, 0.08);
+  color: var(--clr-pneumonia);
+  font-size: 0.875rem;
+}
+
+/* ── Result placeholder ───────────────────────────────────── */
+.result-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-16) var(--space-8);
+  text-align: center;
+  min-height: 280px;
+}
+
+/* ── Result card ──────────────────────────────────────────── */
+.result-card {
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  animation: fadeInUp 0.4s ease;
+}
+
+.result-card--normal {
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.05);
+  box-shadow: var(--shadow-result-normal);
+}
+
+.result-card--pneumonia {
+  border-color: rgba(248, 113, 113, 0.3);
+  background: rgba(248, 113, 113, 0.05);
+  box-shadow: var(--shadow-result-pneumonia);
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.result-icon { flex-shrink: 0; }
+.result-icon--normal   { color: var(--clr-normal); }
+.result-icon--pneumonia{ color: var(--clr-pneumonia); }
+
+.result-label-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-text-muted);
+}
+
+.result-label {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.result-timing {
+  margin-left: auto;
+  font-size: 0.75rem;
+}
+
+/* ── Confidence bar ───────────────────────────────────────── */
+.confidence-section { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.confidence-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.confidence-track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.confidence-fill--normal    { background: linear-gradient(90deg, #059669, var(--clr-normal)); }
+.confidence-fill--pneumonia { background: linear-gradient(90deg, #dc2626, var(--clr-pneumonia)); }
+
+/* ── LLM Report section ───────────────────────────────────── */
+.report-section {
+  border-top: 1px solid var(--clr-border);
+  padding-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.report-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--clr-accent);
+}
+
+.report-body {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--clr-text-secondary);
+}
+
+.report-placeholder {
+  font-size: 0.75rem;
+  border-top: 1px solid var(--clr-border);
+  padding-top: var(--space-4);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.app-footer {
+  text-align: center;
+  padding: var(--space-6) var(--space-8);
+  border-top: 1px solid var(--clr-border);
+  font-size: 0.78rem;
+}

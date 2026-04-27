@@ -1,0 +1,50 @@
+# ==============================================================
+# Chest X-Ray Pneumonia Detection — Python Requirements
+# Python 3.11 | CUDA 12.1 | RTX 4060 Laptop
+# ==============================================================
+# Install PyTorch first (CUDA 12.1 wheel):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+# Then install everything else:
+#   pip install -r requirements.txt
+
+# ── Core ML ────────────────────────────────────────────────────
+torch>=2.2.0               # installed separately via cu121 wheel
+torchvision>=0.17.0        # installed separately via cu121 wheel
+numpy>=1.26.0
+opencv-python>=4.9.0
+Pillow>=10.2.0
+scikit-learn>=1.4.0
+tqdm>=4.66.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+pandas>=2.2.0
+tensorboard>=2.16.0
+
+# ── ONNX export & runtime ──────────────────────────────────────
+onnx>=1.16.0
+onnxruntime>=1.17.0         # CPU runtime for verification; GPU runtime optional
+
+# ── FastAPI backend ─────────────────────────────────────────────
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9     # file upload support
+pydantic>=2.6.0
+aiofiles>=23.2.1
+httpx>=0.27.0               # async HTTP client (used by Triton client wrapper)
+
+# ── Triton Inference Server client ──────────────────────────────
+tritonclient[http]>=2.44.0  # HTTP/REST client for Triton
+geventhttpclient>=2.0.11    # dependency of tritonclient[http]
+
+# ── LLM integration ─────────────────────────────────────────────
+anthropic>=0.25.0           # Claude API (Phase 4)
+openai>=1.23.0              # OpenAI fallback (Phase 4)
+
+# ── Kaggle dataset download ─────────────────────────────────────
+kaggle>=1.6.12
+
+# ── Dev / testing ───────────────────────────────────────────────
+pytest>=8.1.0
+pytest-asyncio>=0.23.0
+requests>=2.31.0
+python-dotenv>=1.0.1
