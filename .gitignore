@@ -24,6 +24,7 @@ Data/
 data/
 *.zip
 *.tar.gz
+*.rar
 
 # Triton model binary
 triton/model_repository/pneumonia_model/1/model.onnx
