@@ -161,4 +161,4 @@ This project accompanies a software paper documenting:
 
 ## License
 
-MIT © 2024
+MIT 
